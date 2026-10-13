@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.bounded/
+*.key
+*.keypair.json
+.env
+.env.*
+!.env.example
+*.tsbuildinfo

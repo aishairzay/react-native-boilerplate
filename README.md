@@ -56,5 +56,3 @@ npm run build      # typecheck, then the deployable site in dist/
 
 Fonts, images and icons are bundled with the app; do not load them from a CDN.
 Remove the `robots` `noindex` tag in `index.html` when the app should appear in search results.
-
-Webhook check 17:42:21

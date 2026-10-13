@@ -1,0 +1,67 @@
+{
+  "oapp": true,
+  "boundaries": {
+    "egress": [
+      {
+        "id": "oapp-egress",
+        "allow": [
+          "service:cap",
+          "service:x402"
+        ],
+        "mode": "locked"
+      }
+    ]
+  },
+  "auth": {
+    "wallets": true,
+    "anonymous": true
+  },
+  "constants": {
+    "AGENT_ADDRESS": "3urS2TMzFniVhuR4zSuBCBh5REJYhGuzAxvhzwre5jet",
+    "AGENT_ADDRESS_BOUND": true
+  },
+  "build": {
+    "defaultProfile": "standard",
+    "profiles": {
+      "standard": {
+        "landing": "smoke",
+        "origins": [
+          "sdk",
+          "dashboard"
+        ],
+        "funding": {
+          "aiEnvelopeMicroUsd": 2500000,
+          "infraEnvelopeMicroUsd": 0,
+          "allowPerRunEnvelope": true
+        }
+      }
+    }
+  },
+  "users/$ownerId/habits/$habitId": {
+    "fields": {
+      "name": "String",
+      "reminderHour": "UInt?",
+      "reminderMinute": "UInt?",
+      "createdAt": "UInt!"
+    },
+    "rules": {
+      "read": "(@const.AGENT_ADDRESS_BOUND == true && @user.id == @const.AGENT_ADDRESS) || @user.id == $ownerId",
+      "create": "@user.id != null && @user.id == $ownerId",
+      "update": "@user.id != null && @user.id == $ownerId",
+      "delete": "@user.id != null && @user.id == $ownerId"
+    }
+  },
+  "users/$ownerId/checkins/$checkinId": {
+    "fields": {
+      "habitId": "String!",
+      "day": "String!",
+      "createdAt": "UInt!"
+    },
+    "rules": {
+      "read": "(@const.AGENT_ADDRESS_BOUND == true && @user.id == @const.AGENT_ADDRESS) || @user.id == $ownerId",
+      "create": "@user.id != null && @user.id == $ownerId",
+      "update": "@user.id != null && @user.id == $ownerId",
+      "delete": "@user.id != null && @user.id == $ownerId"
+    }
+  }
+}

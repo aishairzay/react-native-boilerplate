@@ -1,0 +1,16 @@
+{
+  "$schema": "https://bounded.sh/schemas/bounded.schema.json",
+  "appId": "f1d6f011ab4df54696d612aa",
+  "name": "OpenApps staging reusable starter source",
+  "environment": "staging",
+  "protocol": "realtime_offchain",
+  "policy": "policy.json",
+  "sourcePush": true,
+  "account": {
+    "keySource": "web"
+  },
+  "build": {
+    "command": "npm run build",
+    "output": "dist"
+  }
+}
